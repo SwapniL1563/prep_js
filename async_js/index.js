@@ -1,3 +1,16 @@
+// JS is single-threaded ( one task at time ),
+// but using event loop it can handle async operation
+// event loop coordinates with callstack,Web API and callback queue
+
+// how js handle async task
+// all sync task first run in callstack
+// if there is an async task it is delegated to web apis
+// async task completes it execution in web api 
+// after completion are send to callback queue
+// microtask run first then macrotask in cb queue
+// then after callsatck is empty finally async task are brought to callstack and run
+
+
 // callback - fn calling another fn as argument and is executed later
 // used to run async code as js is single-threaded
 
