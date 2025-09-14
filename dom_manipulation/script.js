@@ -70,3 +70,72 @@ console.log(document.getElementById("box").innerHTML) // Hello World
 // Note  - reflow - aka as layout happens when structure orgeometry of page cahnges , browser recal postion, size , dimension of elem , hwnce expensive operation ( eg. add elem, change elem size, font size inc)
 // repaint - is cheaper happens whenvisual styles cahnges but layout remains same , brwoser just repaints pixels ( eg . changing color, change bg-color )
 // reflow cause repaint most of them time but not vice versa
+
+
+// Event Bubbling vs Event Capturing
+
+// when u click an elem, event goes in 3 phase:
+
+// 1 ) Capturing phase - event travel from window -> doc -> parent -> child 
+// 2 ) Target phase - event reaches the actual target
+// 3 ) Bubbling phase - event goes back from target -> window
+
+// Event bubbling -> Event starts at taget elem and bubbles upward till its ancestor
+// default behaivour when u use eventListener
+
+document.getElementById("parent").addEventListener("click", () => {
+  console.log("Parent clicked");
+});
+
+document.getElementById("child").addEventListener("click", () => {
+  console.log("Child clicked");
+});
+
+// Output -
+// Child clicked
+// Parent clicked
+
+// Event bubbles from child -> parent 
+
+// use - Event Bubbling 
+
+// Example: Close a modal when clicking anywhere outside.
+
+document.body.addEventListener("click", (e) => {
+  if (e.target.id === "overlay") closeModal();
+});
+
+// stop bubbling 
+child.addEventListener("click", (e) => {
+  e.stopPropagation(); // stops event from going to parent
+  console.log("Child clicked");
+});
+
+
+// use - Event delegation - technique in which instaed of adding event listenr to ultiple child individually add onelistener to parent and use event bubbling to catch event from it
+// instead of add click toeach li tags one event listener on ul tag handles all
+document.getElementById("list").addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    console.log("Clicked:", e.target.textContent);
+  }
+});
+
+
+
+
+// Event Capturing -> event travels from downward parent -> child before hitting target
+// not default need to useCapture = true
+
+document.getElementById("parent").addEventListener("click", () => {
+  console.log("Parent capturing");
+}, true); // true explicitly to enable it
+
+document.getElementById("child").addEventListener("click", () => {
+  console.log("Child clicked");
+});
+
+// Output -
+// Parent capturing
+// Child clicked
+
+// Parent capture event before it reached child
