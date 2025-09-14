@@ -43,4 +43,30 @@ decrementCount.addEventListener("click", function(){
     counter.textContent = count;
 })
 
-// 
+// textContent vs innerText vs innerHTML 
+
+{/* <div id="box">
+  Hello <span style="display: none;">Hidden</span> World
+</div> */}
+
+// textContent - return / sets raw text inside an elem 
+// includes hidden elem too as it ignores css styling
+// faster than innerText coz goesnt trigger reflow/repaint
+
+console.log(document.getElementById("box").textContent); // Hello hidden World
+
+// innerText - return / sets text that is visible 
+// ignores hidden elem as consider css
+// slower than texContent coz triggers reflow/repaint
+
+console.log(document.getElementById("box").innerText); // Hello World
+
+// innerHTML - return / sets HTML markup inside an elem as string
+// used to insert HTML dynamically
+// not safer - XSS attack prone
+
+console.log(document.getElementById("box").innerHTML) // Hello World
+
+// Note  - reflow - aka as layout happens when structure orgeometry of page cahnges , browser recal postion, size , dimension of elem , hwnce expensive operation ( eg. add elem, change elem size, font size inc)
+// repaint - is cheaper happens whenvisual styles cahnges but layout remains same , brwoser just repaints pixels ( eg . changing color, change bg-color )
+// reflow cause repaint most of them time but not vice versa
