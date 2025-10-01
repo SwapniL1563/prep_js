@@ -34,10 +34,10 @@ function greet(greeting, punctuation) {
 
 const user1 = { name: "Swapnil" };
 
-// call -> call fn immediately with this val(user)
+// call -> call fn immediately with this arg val separated by comma(user)
 greet.call(user1, "Hello", "!");  // "Hello Swapnil!"
 
-// apply - same as call , n=but argument passed as array
+// apply - same as call , but argument passed as array
 greet.apply(user, ["Hi", "!!"]);  // "Hi Swapnil!!"
 
 // bind - doesn't call immediately , return new fn with fixed this
