@@ -49,3 +49,20 @@ console.log(tenPerOff(100));
 console.log(tenPerOff(250))
 
 // we create a custom fn tenPerOff that uses same rate
+
+function discount (rate,price) {
+    return price - price * discount;
+}
+
+console.log(discount(0.1,100)); //100
+console.log(discount(0.1,200)); //100
+
+function discount(rate) {
+    return function(price) {
+         return price - price * rate;
+    }
+}
+
+const tenPerOff = discount(0.1);
+console.log(tenPerOff(100));
+console.log(tenPerOff(200));

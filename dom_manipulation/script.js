@@ -1,7 +1,7 @@
 // DOM - Document Object Model 
 // It is tree like structure that represent the HTML of webpage
 // acts an interface that represent stucture of web page as tree of obj(nodes)
-// Why need Dom -> it let js add/remove/access elemnt dynamically 
+// Why need Dom -> it let js add/remove/access element dynamically 
 
 // select elem
 // const btn = document.querySelector("button");
@@ -67,8 +67,8 @@ console.log(document.getElementById("box").innerText); // Hello World
 
 console.log(document.getElementById("box").innerHTML) // Hello World
 
-// Note  - reflow - aka as layout happens when structure orgeometry of page cahnges , browser recal postion, size , dimension of elem , hwnce expensive operation ( eg. add elem, change elem size, font size inc)
-// repaint - is cheaper happens whenvisual styles cahnges but layout remains same , brwoser just repaints pixels ( eg . changing color, change bg-color )
+// Note  - reflow - aka as layout happens when structure or geometry of page changes , browser recal postion, size , dimension of elem , hwnce expensive operation ( eg. add elem, change elem size, font size inc)
+// repaint - is cheaper happens when visual styles changes but layout remains same , brwoser just repaints pixels ( eg . changing color, change bg-color )
 // reflow cause repaint most of them time but not vice versa
 
 
@@ -80,7 +80,7 @@ console.log(document.getElementById("box").innerHTML) // Hello World
 // 2 ) Target phase - event reaches the actual target
 // 3 ) Bubbling phase - event goes back from target -> window
 
-// Event bubbling -> Event starts at taget elem and bubbles upward till its ancestor
+// Event bubbling -> Event starts at target elem and bubbles upward till its ancestor
 // default behaivour when u use eventListener
 
 document.getElementById("parent").addEventListener("click", () => {
@@ -112,8 +112,8 @@ child.addEventListener("click", (e) => {
 });
 
 
-// use - Event delegation - technique in which instaed of adding event listenr to ultiple child individually add onelistener to parent and use event bubbling to catch event from it
-// instead of add click toeach li tags one event listener on ul tag handles all
+// use - Event delegation - technique in which instead of adding event listenr to multiple child individually add one listener to parent and use event bubbling to catch event from it
+// instead of add click to each li tags one event listener on ul tag handles all
 document.getElementById("list").addEventListener("click", (e) => {
   if (e.target.tagName === "LI") {
     console.log("Clicked:", e.target.textContent);

@@ -17,7 +17,7 @@ console.log(double);
 // doesn't change og array
 
 const numbers = [1, 2, 3, 4];
-
+const dou = numbers.map(num => num * 2)
 const doubled = numbers.map(num => num * 2);
 console.log(doubled); 
 
@@ -35,6 +35,8 @@ console.log(evens);
 // used in sum,multiplication ,etc
 
 const numbersArr = [1,5,6,2];
+
+const sum = numbersArr.reduce((acc,num) => acc + num,0)
 
 const sum = numbersArr.reduce((acc,num) => acc + num, 0);
 console.log(sum);

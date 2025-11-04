@@ -8,7 +8,7 @@
 // async task completes it execution in web api 
 // after completion are send to callback queue
 // microtask run first then macrotask in cb queue
-// then after callsatck is empty finally async task are brought to callstack and run
+// then after callstack is empty finally async task are brought to callstack and run
 
 
 // callback - fn calling another fn as argument and is executed later
@@ -28,6 +28,19 @@ function getComments(post, callback) {
   setTimeout(() => callback(["Nice!", "Great!"]), 500);
 }
 
+// eg.
+
+function greet(name,cb) {
+  console.log(`Hello ${name}`);
+  cb()
+}
+
+function sayBye() {
+  console.log("Bye")
+}
+
+greet("Swap" , sayBye)
+
 //  Callback Hell - unreadable,error prone
 getUser((user) => {
   console.log("User:", user.name);
@@ -39,12 +52,19 @@ getUser((user) => {
   });
 });
 
-
-
-// Promises - object that represent eventual completion or failure of async task
-// 3 state - pending,fulfiled and rejected
+// Promises - an object that represent eventual completion or failure of async task
+// 3 state - pending, fulfiled and rejected
 // .then -> runs after promise is resolved
 // .catch -> run after promise is rejected
+
+const myPromise = new Promise((resolve,reject) => {
+  let success = true;
+  if(success) {
+    resolve("Success")
+  } else {
+     reject("Failure")
+  }
+});
 
 function getUser() {
   return new Promise((resolve) =>

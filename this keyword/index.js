@@ -2,7 +2,7 @@
 // it value depend on how fn is called , not where it is declared
 
 // this -> global scope(browser)
-// this -> inside fn -> undedined
+// this -> inside fn -> undefined
 
 // this -> inside obj method -> refers to obj that called method
 const obj = { name: "Swapnil", greet() { console.log(this.name); } };
@@ -43,3 +43,14 @@ greet.apply(user, ["Hi", "!!"]);  // "Hi Swapnil!!"
 // bind - doesn't call immediately , return new fn with fixed this
 const boundGreet = greet.bind(user, "Hey", "!!!");
 boundGreet();  // "Hey Swapnil!!!"
+
+
+function greet(greeting,punctu) {
+  console.log(greeting + " " + this.name + punctu);
+}
+
+const user = { name:"Bob"};
+
+//call 
+
+greet.call(user,"Hello", "!");

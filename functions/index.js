@@ -1,4 +1,4 @@
-// function declaration - hoisted,have this
+// function declaration - hoisted, have this
 function greet() {
     console.log("Hii")
 }

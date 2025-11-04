@@ -6,6 +6,9 @@
 // 1) Object.assign({} , obj) 
 const obj = { a:1, b: { c: 2}};
 
+const shallowc = Object.assign({} , obj);
+shallowc.a = 10;
+
 const shallowCopy = Object.assign({} , obj);
 
 shallowCopy.a = 10;
@@ -19,6 +22,8 @@ console.log(obj.b); // reference shared
 
 // 2) spread operator:
 const obj1 = { a: 1, b: { c: 2 } };
+
+const copyc = {...obj}
 const copy = { ...obj1 };
 
 copy.b.c = 30;
@@ -53,6 +58,8 @@ console.log(arr[2][0]);  // 101
 //  1) structuredClone(obj): -> doesn't support fn
 const obj2 = { a: 1, b: { c: 2}};
 
+const deepc = structuredClone(obj2)
+
 const deepCopy = structuredClone(obj2);
 
 deepCopy.b.c = 3;
@@ -61,6 +68,8 @@ console.log(obj2.b.c); // 2 -> original does't affect
 //  2) JSON.parse(JSON.stringify(obj)) -> partial deep copy losses fn,date
   const obj3 = { a: 1,b: {c : 3}, d: new Date(), fn: () => {}}
   const deepCopy1 = JSON.parse(JSON.stringify(obj3));
+
+  const deepc1 = JSON.parse(JSON.stringify(obj3));
 
   console.log(deepCopy1); // { a: 1, b : { c: 2} } -> copied  successfully but fn and date lose
 
